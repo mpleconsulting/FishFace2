@@ -53,8 +53,8 @@ except ImportError:
     generate_and_collect_secret_keys()
     from secret_keys import *
 
-DEBUG = False
-TEMPLATE_DEBUG = False
+DEBUG = True
+TEMPLATE_DEBUG = True
 
 DATABASES = {
     'default': {
@@ -110,7 +110,7 @@ FILENAME_DATE_FORMAT = "%Y-%m-%d-%H%M%S"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-STATIC_ROOT = os.path.join('djff/static/')
+STATIC_ROOT = os.path.join(ff_conf.LIB, "django", "djff", "static")
 STATIC_URL = '/static/'
 
 MEDIA_ROOT = '/mnt/server_storage/media/'

@@ -8,7 +8,7 @@ def main():
     supervisor_config_string = textwrap.dedent("""
         [unix_http_server]
         file={var_run}/supervisor.sock    ; (the path to the socket file)
-        chown={username}:{username}                    ; socket file uid:gid owner
+        ;  chown={username}:{username}                    ; socket file uid:gid owner
 
         [supervisord]
         logfile={var_log}/supervisord.log ; (main log file;default $CWD/supervisord.log)
@@ -47,7 +47,7 @@ def main():
 
     redis_config_string = textwrap.dedent("""
         [program:redis]
-        command={bin}/redis-server {etc}/redis/redis.conf
+        command=/usr/local/bin/redis-server {etc}/redis/redis.conf
         autostart=true
         autorestart=true
         user={username}
@@ -92,7 +92,7 @@ def main():
 
         config_file_string = textwrap.dedent("""
         [program:{worker}]
-        command=%(ENV_HOME)s/.pyenv/shims/celery worker --app=lib.workers.{worker}_tasks -l {log_level} -Q {worker} -n '{worker}.%%h' --concurrency={concurrency} -O fair {threads}
+        command=/Users/mw/.virtualenvs/fishfaceenv//bin/celery worker --app=lib.workers.{worker}_tasks -l {log_level} -Q {worker} -n '{worker}.%%h' --concurrency={concurrency} -O fair {threads}
         directory={root}
         user={username}
         numprocs=1
