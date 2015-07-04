@@ -1,0 +1,12 @@
+.content {
+  background-color: #FFC38C;
+}
+.preview_area {
+  background-color: #D38354;
+}
+.no-underline {
+  color: #333333;
+}
+.no-underline:hover, .no-underline:focus {
+  text-decoration: none;
+}

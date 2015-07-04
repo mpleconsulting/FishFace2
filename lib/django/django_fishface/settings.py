@@ -113,7 +113,7 @@ FILENAME_DATE_FORMAT = "%Y-%m-%d-%H%M%S"
 STATIC_ROOT = os.path.join(ff_conf.LIB, "django", "djff", "static")
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = '/mnt/server_storage/media/'
+MEDIA_ROOT = '/Users/mw/FishFace2/var/lib/media/'
 MEDIA_URL = '/media/'
 
 #
