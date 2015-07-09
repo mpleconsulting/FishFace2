@@ -1,75 +1,77 @@
 <!DOCTYPE html>
-{% load staticfiles %}
-{% load djff_filters %}
 
 <html lang="en">
-<head>
-    <link rel="stylesheet" type="text/css" href="{% static 'djff/base.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'djff/jquery-ui.min.css' %}" />
 
-    <script type="text/javascript" src="{% static 'djff/jquery-1.11.1.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'djff/jquery-ui.min.js' %}"></script>
+  <head>
 
-    <script type="text/javascript" src="{% static 'djff/moment.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'djff/moment-timezone.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'djff/moment-timezone-with-data-2010-2020.min.js' %}"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            if (window.ff == undefined) {
-                window.ff = {
-                    celery_proxy_url: "{% url 'djff:celery_proxy' %}",
-                    cjt_chunk_base_url: "{% url 'djff:cjt_chunk' 1 %}".slice(0,-2),
-                    csrf_token: "{{ csrf_token }}",
-                    date_format: 'YYYY-MM-DD HH:mm:ss.SSZZ'
-                };
-            }
-        });
-    </script>
+    <title>Experiments | FishFace</title>
 
-    <script type="text/javascript" src="{% static 'djff/base.js' %}"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css" media="screen">
 
-    {% block localscript %}{% endblock %}
 
-    <title>FishFace{% block pagetitle %}{% endblock %}</title>
-</head>
+    <link rel="stylesheet" href="css/fishface_styles.css">
 
-<body>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-<header>
-    <div id="header_title_block">
-    <h2><a href="{% url 'djff:xp_index' %}" id="header_title">FishFace</a></h2>
-    <h4>{% block subtitle %}{% endblock %}</h4>
+  </head>
+  <body>
+    <div class="container">
+
+      <header class="page-header">
+        <h1><a href="#" class="no-underline">FishFace</a> <small>Experiments</small></h1>
+      </header>
+
+      <div class="row">
+
+        <nav class="navbar col-sm-3" role="navigation">
+            <h5>SETUP</h5>
+              <ul class="nav">
+                <li><a href="#">Experiments</a></li>
+                <li><a href="#">Species</a></li>
+                <li><a href="#">Individual Job Templates</a></li>
+                <li><a href="#">Queue Builder</a></li>
+              </ul>
+            <h5>CAPTURING</h5>
+              <ul class="nav">
+                <li><a href="#">Run Capture Jobs</a></li>
+              </ul>
+            <h5>ANALYSIS</h5>
+              <ul class="nav">
+                <li><a href="#">Tag Data</a></li>
+                <li><a href="#">Verify Tags</a></li>
+              </ul>
+            <h5>INFORMATION</h5>
+              <ul class="nav">
+                <li><a href="#">Stats</a></li>
+              </ul>
+        </nav>
+
+        <section class="content col-sm-6">content section</section>
+
+        <section class="preview_area col-sm-3">preview area</section>
+      </div>
+
+      <hr>
+      <footer>
+        <p class="text-muted">&copy; 2015 FishFace - By Wil Langford</p>
+      </footer>
+
     </div>
-</header>
 
-<div id="sidebar">
-        <ul id="main_menu">
-        <li class="non_menu_li">Setup</li>
-        <a href="{% url 'djff:xp_index' %}"><li class="menu_li" id="menu_experiments">Experiments</li></a>
-        <a href="{% url 'djff:sp_index' %}"><li class="menu_li" id="menu_species">Species</li></a>
-        <a href="{% url 'djff:cjt_index' %}"><li class="menu_li" id="menu_templates">Individual Job Templates</li></a>
-        <a href="{% url 'djff:cq_builder' %}"><li class="menu_li" id="menu_cq_builder">Queue Builder</li></a>
-        <li class="non_menu_li">Capturing</li>
-        <a href="{% url 'djff:cq_interface' %}"><li class="menu_li" id="menu_job_queue">Run Capture Jobs</li></a>
-        <li class="non_menu_li">Analysis</li>
-        <a href="{% url 'djff:tagging_interface' %}"><li class="menu_li" id="menu_tagging">Tag Data</li></a>
-        <a href="{% url 'djff:verification_interface' %}"><li class="menu_li" id="menu_verification">Verify Tags</li></a>
-        <li class="non_menu_li">Information</li>
-        <a href="{% url 'djff:stats' %}"><li class="menu_li" id="menu_stats">Stats</li></a>
-        </ul>
-    {% block sidebar %}
-    {% endblock %}
-</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
-<div id="preview_area">
-    {% block preview_area %}
-    {% endblock %}
-</div>
-
-<div id="content">
-    {% block content %}{% endblock %}
-</div>
-
-</body>
+  </body>
 </html>
