@@ -1,12 +1,26 @@
+/* layout
+-------------------------------- */
+body {
+  margin-top: 70px;
+}
+.container {
+  max-width: 1000px;
+}
 .content {
   background-color: #FFC38C;
+  height: 500px;
 }
 .preview_area {
   background-color: #D38354;
+  height: 500px;
 }
-.no-underline {
+
+/* header - not needed with mobile nav
+-------------------------------- */
+/*.no-underline {
   color: #333333;
 }
 .no-underline:hover, .no-underline:focus {
   text-decoration: none;
-}
+}*/
+
