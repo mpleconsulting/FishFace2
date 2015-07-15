@@ -7,28 +7,35 @@ body {
   max-width: 1000px;
 }
 .content_area {
-  /*background-color: #FFC38C;*/
-/*  min-height: 500px;*/
   height: 100%;
+  border-right: 1px solid #eee;
 }
 .preview_area {
-  background-color: #D38354;
+  /*background-color: #D38354;*/
   min-height: 500px;
   height: 100%;
 }
 
+/* cqt_chunk.html
+-------------------------------- */
+
 /* cq_builder.html
 -------------------------------- */
-#wellQueue {
+.wellQueue {
   margin-top: 18px;
-  /*border: 2px dashed #aaa;*/
-}
-#wellQueue li {
-  /*color: #aaa;*/
 }
 .ui_sortable_placeholder {
-  border: 2px dashed #AAA !important;
+  border: 2px dashed #aaa !important;
   height: 18px;
   width: 100%;
-  background: #DDDDDD !important;
+  background: #ddd !important;
+}
+
+/* media queries
+-------------------------------- */
+/*same for small devices*/
+@media (max-width:768px) {
+  .content_area {
+    border-right: none;
+  }
 }

@@ -92,14 +92,14 @@
     </div>
 
     <div class="form-group">
-      <button type="submit" class="btn btn-default btn-lg btn-block" id="id_submit_button">Save</button>
+      <button type="submit" class="btn btn-success btn-lg btn-block" id="id_submit_button">Save</button>
     </div>
 
     <div class="form-group">
       <div class="container-fluid">
         <div class="row">
           <div class="col-xs-offset-7 col-xs-3">
-            <button type="button" class="btn btn-danger btn-sm btn-block" id="delete_button">delete</button>
+            <button type="button" class="btn btn-default btn-sm btn-block" id="delete_button">delete</button>
           </div>
           <div class="col-xs-1">
             <div class="checkbox-inline">
@@ -112,21 +112,6 @@
         </div>
       </div>
     </div>
-
-<!--   </form>
-
-    <form action="{% url 'djff:cjt_detail' context.id %}" method="post">
-        {% csrf_token %}
-
-        <input type="submit" id="id_submit_button" value="Save">
-
-        <span class="padded_boxed">
-            <label>Confirm delete
-                <input type="checkbox" id="confirm_delete">
-            </label>
-            <input type="button" class="deleterbutton" value="Delete" id="delete_button">
-        </span>
-    </form> -->
 
     <p class="alert alert-warning" role="alert">Note: To run the flume for a certain amount of time without capturing any data, use a 0 value for the interval. <em>For example, you could set the voltage to 0V, the duration to 900s, and the interval to 0 to give the fish a 15-minute rest.</em></p>
 

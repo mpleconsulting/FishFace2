@@ -33,13 +33,12 @@
 
 {% block content %}
 
-  <ul id="cjt_list" class="nav">
+  <ul id="cjt_list" class="list-unstyled">
     <li class="alert alert-danger" role="alert" id="cjt_list_placeholder">No stored Capture Job Templates</li>
   </ul>
 
   <p>
-    <a href="{% url 'djff:cjt_new' %}" class="btn btn-primary btn-lg btn-block" role="button">Add a new capture job template
-    </a>
+    <a href="{% url 'djff:cjt_new' %}" class="btn btn-primary btn-lg btn-block" role="button">Add a new template</a>
   </p>
 
 {% endblock %}

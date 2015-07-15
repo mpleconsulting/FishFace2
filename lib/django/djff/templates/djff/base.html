@@ -15,16 +15,16 @@
     <script type="text/javascript" src="{% static 'djff/moment-timezone-with-data-2010-2020.min.js' %}"></script>
 
     <script type="text/javascript">
-        $(document).ready(function() {
-            if (window.ff == undefined) {
-                window.ff = {
-                    celery_proxy_url: "{% url 'djff:celery_proxy' %}",
-                    cjt_chunk_base_url: "{% url 'djff:cjt_chunk' 1 %}".slice(0,-2),
-                    csrf_token: "{{ csrf_token }}",
-                    date_format: 'YYYY-MM-DD HH:mm:ss.SSZZ'
-                };
-            }
-        });
+      $(document).ready(function() {
+        if (window.ff == undefined) {
+          window.ff = {
+            celery_proxy_url: "{% url 'djff:celery_proxy' %}",
+            cjt_chunk_base_url: "{% url 'djff:cjt_chunk' 1 %}".slice(0,-2),
+            csrf_token: "{{ csrf_token }}",
+            date_format: 'YYYY-MM-DD HH:mm:ss.SSZZ'
+          };
+        }
+      });
     </script>
 
     <script type="text/javascript" src="{% static 'djff/base.js' %}"></script>
