@@ -1,9 +1,11 @@
 {% extends "djff/base.html" %}
+
 {% load staticfiles %}
 
 {% block localscript %}
+
 <script type="text/javascript">
-$(document).ready(function() {
+  $(document).ready(function() {
     window.ff.cjq_saver_url = "{% url 'djff:cjq_saver' %}";
     window.ff.cjqs_url = "{% url 'djff:cjqs' %}";
     window.ff.job_specs = {{ job_specs|safe }};
@@ -12,21 +14,21 @@ $(document).ready(function() {
     window.ff.cjq_id = 0;
 
     window.ff.which_template = 'cq_builder';
-});
+  });
 </script>
 <script type="text/javascript" src="{% static 'djff/cq_utils.js' %}"></script>
 <script type="text/javascript" src="{% static 'djff/cq_builder.js' %}"></script>
 
 <script type="text/javascript">
 $(document).ready(function(){
-    if (window.ff.cjt_ids.length > 0) {
-        $('#cjt_list_placeholder').remove();
-    }
+  if (window.ff.cjt_ids.length > 0) {
+    $('#cjt_list_placeholder').remove();
+  }
 
-    for (var idx in window.ff.cjt_ids) {
-        var cjt_id = window.ff.cjt_ids[idx];
-        window.ff.cq_util.append_cjt_li_chunk("cjt_list", cjt_id, true, '', '');
-    }
+  for (var idx in window.ff.cjt_ids) {
+    var cjt_id = window.ff.cjt_ids[idx];
+    window.ff.cq_util.append_cjt_li_chunk("cjt_list", cjt_id, true, '', '');
+  }
 });
 </script>
 
@@ -35,38 +37,48 @@ $(document).ready(function(){
 {% block subtitle %}Capture Queue Builder{% endblock %}
 
 {% block content %}
-    <div id="capture_queue_builder_wrapper" class="job_wrapper">
-        <h2>Capture Job Queue</h2>
-        <form id="queue_form">
-            <label class="big_label">Name
-                <input type="text" name="queue_name" id="queue_name" value=""/>
-            </label>
-            <br>
-            <label>Description
-                <textarea name="queue_comment" id="queue_comment" rows="2" cols="40"></textarea>
-            </label>
-        </form>
-        <br>
-        <span id="save_queue_button" class="boxed">SAVE QUEUE</span>
-        <span id="clear_queue_button" class="boxed deleterbutton">CLEAR QUEUE</span>
-        <br>
-        <ul class="queue_block" id="capture_job_queue">
-            <li id="queue_placeholder">No queued jobs.</li>
-        </ul>
+
+  <div id="capture_queue_builder_wrapper">
+
+    <h4>Capture Job Queue</h4>
+
+    <form id="queue_form">
+      <div class="form-group">
+        <label for="queue_name">Name</label>
+        <input type="text" class="form-control" id="queue_name" placeholder="Name" name="queue_name" id="queue_name" value="">
+      </div>
+
+      <div class="form-group">
+        <label for="queue_comment">Description (optional)</label>
+        <textarea class="form-control" id="queue_comment" placeholder="Description (optional)" name="queue_comment" rows="2"></textarea>
+      </div>
+    </form>
+
+    <div class="btn-group" role="group">
+      <button type="button" id="save_queue_button" class="btn btn-primary text-uppercase">Save</button>
+      <button type="button" id="clear_queue_button" class="btn btn-default text-uppercase">Clear</button>
     </div>
+
+    <div class="well" id="wellQueue">
+      <ul class="list-unstyled" id="capture_job_queue">
+        <li id="queue_placeholder" class="text-muted">no queued jobs</li>
+      </ul>
+    </div>
+
+  </div>
 
 {% endblock %}
 
 {% block preview_area %}
-    <h3>Saved Queues</h3>
-    <ul class="queue_block" id="cjq_list">
-        <li>Loading saved queues...</li>
-    </ul>
 
-    <h3>Capture Job Templates</h3>
-    <ul class="queue_block" id="cjt_list">
-        <li id="cjt_list_placeholder">No stored Capture Job Templates.</li>
-    </ul>
+  <h4>Saved Queues</h4>
+  <ul class="queue_block" id="cjq_list">
+    <li>Loading saved queues...</li>
+  </ul>
 
+  <h4>Capture Job Templates</h4>
+  <ul class="queue_block" id="cjt_list">
+    <li id="cjt_list_placeholder">No stored Capture Job Templates.</li>
+  </ul>
 
 {% endblock %}

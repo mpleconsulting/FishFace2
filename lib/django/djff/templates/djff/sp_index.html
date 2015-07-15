@@ -1,30 +1,40 @@
 {% extends "djff/base.html" %}
+
 {% load djff_filters %}
 
 {% block subtitle %}Species{% endblock %}
 
 {% block content %}
-    <ol>
-    {% for sp in context %}
-                <li class="boxed">
-                    <a href="{% url 'djff:sp_detail' sp.id %}">
-                        {{ sp.name }}
-                    </a>
-                    <br><em>Shortname</em>: {{ sp.shortname }}
-                    {% if sp.image %}
-                    <br><em>Image</em>:
-                        <br> {{ sp.inline_image|mark_safe }}
-                    {% endif %}
-                </li>
-    {% empty %}
-        <p>There are no stored species.</p>
-    {% endfor %}
-    </ol>
 
-    <div class="boxed">
-        Please note that all species information must be unique or an error
-    message will be raised.  That is, if you already see a plecostomus
-    species entry above, please don't create another one.
-    </div>
-    <p>Add a <a href="{% url 'djff:sp_new' %}">new species</a>.</p>
+{% for sp in context %}
+
+  <div class="well">
+    <ul class="list-unstyled">
+      <a href="{% url 'djff:sp_detail' sp.id %}">
+      <li>
+        {{ sp.name }}
+      </li>
+      </a>
+      <li>
+        <strong>Shortname</strong>: {{ sp.shortname }} {% if sp.image %}
+      </li>
+      <li>
+        <strong>Image</strong>: {{ sp.inline_image|mark_safe }} {% endif %}
+      </li>
+    </ul>
+  </div>
+
+{% empty %}
+
+  <p class="alert alert-danger" role="alert">There are no stored species</p>
+
+{% endfor %}
+
+  <p class="alert alert-warning" role="alert">Please note that all species information must be unique or an error message will be raised. That is, if you already see a <em>plecostomus species</em> entry above, please don't create another one.</p>
+
+  <p>
+    <a href="{% url 'djff:sp_new' %}" class="btn btn-primary btn-lg btn-block" role="button">Add a new species
+    </a>
+  </p>
+
 {% endblock %}

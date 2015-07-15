@@ -2,10 +2,29 @@
 
 {% block subtitle %}Species{% endblock %}
 
+{% block localscript %}
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("form input[type='text'").addClass("form-control");
+      console.log("test test");
+    });
+  </script>
+
+{% endblock %}
+
 {% block content %}
-    <form action="{% url 'djff:sp_detail' context.id %}" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Save">
-    </form>
+
+  <form action="{% url 'djff:sp_detail' context.id %}" method="post">
+    <h4>Edit Species Template</h4>
+    <div class="form-group">
+      {% csrf_token %}
+      {{ form.as_p }}
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-default btn-lg btn-block" value="Save">Save</button>
+    </div>
+  </form>
+
 {% endblock %}

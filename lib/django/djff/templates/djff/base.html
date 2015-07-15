@@ -6,6 +6,31 @@
 
   <head>
 
+    <script type="text/javascript" src="{% static 'djff/jquery-1.11.1.min.js' %}"></script>
+    <script src="{% static 'djff/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'djff/jquery-ui.min.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'djff/moment.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'djff/moment-timezone.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'djff/moment-timezone-with-data-2010-2020.min.js' %}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            if (window.ff == undefined) {
+                window.ff = {
+                    celery_proxy_url: "{% url 'djff:celery_proxy' %}",
+                    cjt_chunk_base_url: "{% url 'djff:cjt_chunk' 1 %}".slice(0,-2),
+                    csrf_token: "{{ csrf_token }}",
+                    date_format: 'YYYY-MM-DD HH:mm:ss.SSZZ'
+                };
+            }
+        });
+    </script>
+
+    <script type="text/javascript" src="{% static 'djff/base.js' %}"></script>
+
+    {% block localscript %}{% endblock %}
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,6 +43,7 @@
     <link rel="stylesheet" href="{% static 'djff/bootstrap-theme.min.css' %}" media="screen">
 
     <!-- custom -->
+    <!-- <link rel="stylesheet" href="{% static 'djff/base.css' %}"> -->
     <link rel="stylesheet" href="{% static 'djff/fishface_styles.css' %}">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -41,7 +67,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">FishFace</a>
+          <a class="navbar-brand" href="{% url 'djff:xp_index' %}">FishFace</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -52,27 +78,27 @@
               <ul class="dropdown-menu">
                 <li><a href="{% url 'djff:xp_index' %}">Experiments</a></li>
                 <li><a href="{% url 'djff:sp_index' %}">Species</a></li>
-                <li><a href="#">Individual Job Templates</a></li>
-                <li><a href="#">Queue Builder</a></li>
+                <li><a href="{% url 'djff:cjt_index' %}">Individual Job Templates</a></li>
+                <li><a href="{% url 'djff:cq_builder' %}">Queue Builder</a></li>
               </ul>
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Capturing <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Run Capture Jobs</a></li>
+                <li><a href="{% url 'djff:cq_interface' %}">Run Capture Jobs</a></li>
               </ul>
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Analysis <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Tag Data</a></li>
-                <li><a href="#">Verify Tags</a></li>
+                <li><a href="{% url 'djff:tagging_interface' %}">Tag Data</a></li>
+                <li><a href="{% url 'djff:verification_interface' %}">Verify Tags</a></li>
               </ul>
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Information <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Stats</a></li>
+                <li><a href="{% url 'djff:stats' %}">Stats</a></li>
               </ul>
             </li>
           </ul>
@@ -83,66 +109,29 @@
 
     <div class="container">
 
-    <!-- header -->
-    <!-- <header class="page-header">
-      <h1><a href="#" class="no-underline">FishFace</a> <small>Experiments</small></h1>
-    </header> -->
+      <!-- breadcrumb -->
+      <ol class="breadcrumb">
+        <li><a href="{% url 'djff:xp_index' %}">Home</a></li>
+        <li>Setup</li>
+        <li>{% block subtitle %}{% endblock %}</li>
+      </ol>
+      <!-- end breadcrumb -->
 
-    <!-- side nav -->
-    <!--  <div class="row">
-      <nav class="navbar navbar-default col-sm-3" role="navigation">
-        <ul class="nav">
-          <li>SETUP
-            <ul class="nav">
-              <li><a href="#">Experiments</a></li>
-              <li><a href="#">Species</a></li>
-              <li><a href="#">Individual Job Templates</a></li>
-              <li><a href="#">Queue Builder</a></li>
-            </ul>
-          </li>
-          <li>CAPTURING
-            <ul class="nav">
-              <li><a href="#">Run Capture Jobs</a></li>
-            </ul>
-          </li>
-          <li>ANALYSIS
-            <ul class="nav">
-              <li><a href="#">Tag Data</a></li>
-              <li><a href="#">Verify Tags</a></li>
-            </ul>
-          </li>
-          <li>INFORMATION
-            <ul class="nav">
-              <li><a href="#">Stats</a></li>
-            </ul>
-          </li>
-        </ul>
-      </nav> -->
-
-      <section class="content col-sm-6">
-        <div class="container">
-          {% block content %}{% endblock %}
-        </div>
+      <section class="content_area col-sm-6">
+        {% block content %}{% endblock %}
       </section>
 
       <section class="preview_area col-sm-6">
-        <div class="container">
-          {% block preview_area %}{% endblock %}
-        </div>
+        {% block preview_area %}{% endblock %}
       </section>
     </div>
 
-      <hr>
-      <footer>
-        <div class="container pull-right">
+    <hr>
+    <footer>
+      <div class="container text-right">
         <p class="text-muted">&copy; 2015 FishFace - By Wil Langford</p>
-        </div>
-      </footer>
-
-    </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="{% static 'djff/bootstrap.min.js' %}"></script>
+      </div>
+    </footer>
 
   </body>
 </html>

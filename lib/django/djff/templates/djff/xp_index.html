@@ -3,18 +3,33 @@
 {% block subtitle %}Experiments{% endblock %}
 
 {% block content %}
-    <ul>
-    {% for xp in xp_list %}
-                <li class="boxed inline_block">
-                    <a href="{% url 'djff:xp_detail' xp.id %}">
-                    {{ xp.name }}</a>
-                    <br><em>Species</em>: {{ xp.species.shortname }}
-                    <br><em>Started</em>: {{ xp.xp_start|date:"Y-M-d H:i:s"  }}
-                </li><br />
-    {% empty %}
-        <p>No experiments have been stored.</p>
-    {% endfor %}
-    </ul>
 
-    <p>Add a <a href="{% url 'djff:xp_new' %}">new experiment</a>.</p>
+{% for xp in xp_list %}
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        <a href="{% url 'djff:xp_detail' xp.id %}">{{ xp.name }}</a>
+      </h3>
+    </div>
+
+    <div class="panel-body">
+      <ul class="nav">
+        <li><strong>Species:</strong> {{ xp.species.shortname }}</li>
+        <li><strong>Started:</strong> {{ xp.xp_start|date:"Y-M-d H:i:s"  }}</li>
+      </ul>
+    </div>
+  </div>
+
+{% empty %}
+
+  <p class="alert alert-danger" role="alert">No experiments have been stored</p>
+
+{% endfor %}
+
+  <p>
+    <a href="{% url 'djff:xp_new' %}" class="btn btn-primary btn-lg btn-block" role="button">Add a new experiment
+    </a>
+  </p>
+
 {% endblock %}

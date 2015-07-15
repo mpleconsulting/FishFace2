@@ -6,21 +6,29 @@ body {
 .container {
   max-width: 1000px;
 }
-.content {
-  background-color: #FFC38C;
-  height: 500px;
+.content_area {
+  /*background-color: #FFC38C;*/
+/*  min-height: 500px;*/
+  height: 100%;
 }
 .preview_area {
   background-color: #D38354;
-  height: 500px;
+  min-height: 500px;
+  height: 100%;
 }
 
-/* header - not needed with mobile nav
+/* cq_builder.html
 -------------------------------- */
-/*.no-underline {
-  color: #333333;
+#wellQueue {
+  margin-top: 18px;
+  /*border: 2px dashed #aaa;*/
 }
-.no-underline:hover, .no-underline:focus {
-  text-decoration: none;
-}*/
-
+#wellQueue li {
+  /*color: #aaa;*/
+}
+.ui_sortable_placeholder {
+  border: 2px dashed #AAA !important;
+  height: 18px;
+  width: 100%;
+  background: #DDDDDD !important;
+}
