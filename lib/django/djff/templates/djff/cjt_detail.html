@@ -66,8 +66,16 @@
 {% csrf_token %}
 
     <div class="form-group">
+      <label for="id_duration">Duration to Capture</label>
+      <input type="number" class="form-control" id="id_duration" placeholder="Duration to Capture" name="duration" step="5.0" value="{{ context.duration }}">
+    </div>
+    <div class="form-group">
       <label for="id_voltage">Voltage</label>
       <input type="number" class="form-control" id="id_voltage" placeholder="Voltage" name="voltage" step="0.5" value="{{ context.voltage }}">
+    </div>
+      <div class="form-group">
+      <label for="id_interval">Interval between Images</label>
+      <input type="number" class="form-control" id="id_interval" placeholder="Interval between Images" name="interval" step="1.0" value="{{ context.interval }}">
     </div>
     <div class="form-group">
       <label for="id_current">Max Current</label>
@@ -77,15 +85,6 @@
       <label for="id_startup_delay">Delay between Power and Capture</label>
       <input type="number" class="form-control" id="id_startup_delay" placeholder="Delay between Power and Capture" name="startup_delay" step="any" value="{{ context.startup_delay }}">
     </div>
-    <div class="form-group">
-      <label for="id_duration">Duration to Capture</label>
-      <input type="number" class="form-control" id="id_duration" placeholder="Duration to Capture" name="duration" step="5.0" value="{{ context.duration }}">
-    </div>
-    <div class="form-group">
-      <label for="id_interval">Interval between Images</label>
-      <input type="number" class="form-control" id="id_interval" placeholder="Interval between Images" name="interval" step="1.0" value="{{ context.interval }}">
-    </div>
-
     <div class="form-group">
       <label for="id_description">Description (optional)</label>
       <textarea class="form-control" id="id_description" placeholder="Description (optional)" name="description" rows="10">{{ context.description }}</textarea>
@@ -113,6 +112,6 @@
       </div>
     </div>
 
-    <p class="alert alert-warning" role="alert">Note: To run the flume for a certain amount of time without capturing any data, use a 0 value for the interval. <em>For example, you could set the voltage to 0V, the duration to 900s, and the interval to 0 to give the fish a 15-minute rest.</em></p>
+    <p class="alert alert-warning" role="alert">Note: To run the flume for a certain amount of time without capturing any data, use a <samp>0</samp> value for the interval. <em>For example, you could set the voltage to <samp>0V</samp>, the duration to <samp>900s</samp>, and the interval to <samp>0</samp> to give the fish a <samp>15-minute</samp> rest.</em></p>
 
 {% endblock %}

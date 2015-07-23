@@ -59,9 +59,10 @@ $(document).ready(function(){
       <button type="button" id="clear_queue_button" class="btn btn-default text-uppercase">Clear</button>
     </div>
 
-    <div class="well wellQueue">
-      <ul class="list-unstyled" id="capture_job_queue">
-        <li id="queue_placeholder" class="text-muted">no queued jobs</li>
+    <!-- <div class="well wellQueue"> -->
+    <div class="wellQueue">
+      <ul id="capture_job_queue" class="list-unstyled">
+        <li id="queue_placeholder" class="alert alert-danger" role="alert">No queued Jobs</li>
       </ul>
     </div>
 
@@ -72,13 +73,13 @@ $(document).ready(function(){
 {% block preview_area %}
 
   <h4>Saved Queues</h4>
-  <ul class="list-unstyled" id="cjq_list">
-    <li class="text-primary">Loading saved queues...</li>
+  <ul id="cjq_list" class="list-unstyled" >
+    <li class="alert alert-info" role="alert">Loading saved Queues...</li>
   </ul>
 
   <h4>Capture Job Templates</h4>
   <ul class="list-unstyled" id="cjt_list">
-    <li id="cjt_list_placeholder" class="text-danger">no stored templates</li>
+    <li id="cjt_list_placeholder" class="alert alert-danger" role="alert">No stored Job Templates</li>
   </ul>
 
 {% endblock %}

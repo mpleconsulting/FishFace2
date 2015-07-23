@@ -7,29 +7,61 @@ body {
   max-width: 1000px;
 }
 .content_area {
-  height: 100%;
+  /*background-color: #ccffcc;*/
+  /*min-height: 500px;*/
   border-right: 1px solid #eee;
 }
 .preview_area {
-  /*background-color: #D38354;*/
-  min-height: 500px;
-  height: 100%;
+  /*background-color: #ccc;*/
+  /*min-height: 500px;*/
 }
 
-/* cqt_utils.js
+/* cqt_chunk
 -------------------------------- */
-
+.cjt_container {
+/*  width: 100%;*/
+  text-align: center;
+  color: #444;
+  font-size: .9em;
+}
+.cjt_row {
+  margin-bottom: 18px;
+  width: 100%;
+}
+.cjt_duration, .cjt_voltage, .cjt_interval{
+  font-size: 1.5em;
+  font-weight: 200;
+}
+.cjt_duration, .cjt_interval{
+  background-color: #ccc;
+}
+.cjt_voltage{
+  background-color: #bbb;
+}
+.cjt_current, .cjt_delay, .cjt_comment{
+  background-color: #ddd;
+}
+.cjt_comment{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-style: italic;
+}
 
 /* cq_builder.html
 -------------------------------- */
 .wellQueue {
   margin-top: 18px;
+  /*min-height: 200px;*/
 }
 .ui_sortable_placeholder {
   border: 2px dashed #aaa !important;
-  height: 18px;
+  height: 500px;
   width: 100%;
   background: #ddd !important;
+}
+.cq_btn_loadRemove {
+  margin-top: 8px;
 }
 
 /* media queries
