@@ -16,32 +16,31 @@ body {
   /*min-height: 500px;*/
 }
 
-/* cqt_chunk
+/* cqt_chunk.html
 -------------------------------- */
 .cjt_container {
-/*  width: 100%;*/
   text-align: center;
-  color: #444;
   font-size: .9em;
+  width: 100%;
 }
 .cjt_row {
   margin-bottom: 18px;
-  width: 100%;
+  cursor: pointer;
 }
-.cjt_duration, .cjt_voltage, .cjt_interval{
-  font-size: 1.5em;
+.cjt_duration, .cjt_voltage, .cjt_interval, .cjt_current, .cjt_startup_delay {
   font-weight: 200;
+  letter-spacing: .1em;
 }
-.cjt_duration, .cjt_interval{
-  background-color: #ccc;
-}
-.cjt_voltage{
+.cjt_duration, .cjt_voltage, .cjt_interval {
+  font-size: 1.5em;
   background-color: #bbb;
+  color: #333;
 }
-.cjt_current, .cjt_delay, .cjt_comment{
+.cjt_current, .cjt_startup_delay, .cjt_comment {
   background-color: #ddd;
+  color: #444;
 }
-.cjt_comment{
+.cjt_comment {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -50,15 +49,21 @@ body {
 
 /* cq_builder.html
 -------------------------------- */
+.cjt_grid {
+  display: initial;
+}
 .wellQueue {
   margin-top: 18px;
-  /*min-height: 200px;*/
+  border: 2px solid red;
+}
+#capture_job_queue {
+  background: green;
+  border-radius: 5px;
 }
 .ui_sortable_placeholder {
   border: 2px dashed #aaa !important;
-  height: 500px;
-  width: 100%;
-  background: #ddd !important;
+  height: 100px;
+  background: #eee !important;
 }
 .cq_btn_loadRemove {
   margin-top: 8px;

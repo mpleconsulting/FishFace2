@@ -17,7 +17,7 @@
         <div class="col-xs-4 cjt_voltage">{{ cjt.voltage }}<small>V</small></div>
         <div class="col-xs-4 cjt_interval">{{ cjt.interval }}<small>s</small></div>
         <div class="col-xs-4 cjt_current">{{ cjt.current }}<small>A</small></div>
-        <div class="col-xs-4 cjt_delay">{{ cjt.startup_delay }}<small>s</small></div>
+        <div class="col-xs-4 cjt_startup_delay">{{ cjt.startup_delay }}<small>s</small></div>
 
 {% if cjt.capture %}
 
@@ -29,6 +29,7 @@
 {% if cjt.description %}
 
         <div class="col-xs-4 cjt_comment">{{ cjt.description }}</div>
+      </div>
 
 {% endif %}
 
