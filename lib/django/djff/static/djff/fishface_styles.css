@@ -1,4 +1,4 @@
-/* layout
+/* base.html
 -------------------------------- */
 body {
   margin-top: 70px;
@@ -54,10 +54,10 @@ body {
 }
 .wellQueue {
   margin-top: 18px;
-  border: 2px solid red;
+  /*border: 2px solid red;*/
 }
 #capture_job_queue {
-  background: green;
+  /*background: green;*/
   border-radius: 5px;
 }
 .ui_sortable_placeholder {
@@ -67,6 +67,9 @@ body {
 }
 .cq_btn_loadRemove {
   margin-top: 8px;
+}
+#cq_cjtHeader {
+  margin-top: 24px;
 }
 
 /* media queries
