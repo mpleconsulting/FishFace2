@@ -50,7 +50,7 @@ body {
 /* cq_builder.html
 -------------------------------- */
 .cjt_grid {
-  display: initial;
+  width: inherit !important;
 }
 .wellQueue {
   margin-top: 18px;
