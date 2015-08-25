@@ -21,6 +21,11 @@ urlpatterns = dcu.patterns(
         name='xp_rename'
     ),
     dcu.url(
+        r'^xp/update/(?P<pk>\d+)/$',
+        views.XPUpdate.as_view(),
+        name='xp_update'
+    ),
+    dcu.url(
         r'^xp/renamer/(?P<xp_id>\d+)/$',
         views.xp_renamer,
         name='xp_renamer'

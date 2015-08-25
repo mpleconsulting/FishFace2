@@ -537,6 +537,13 @@ def xp_new(request):
                     args=(xp.id,))
     )
 
+class XPUpdate(dvge.UpdateView):
+    model = Experiment
+    context_object_name = 'context'
+    template_name = 'djff/xp_update.html'
+    # success_url = dcu.reverse_lazy('djff:sp_index')
+
+
 
 def xp_rename(request, xp_id):
     xp = ds.get_object_or_404(Experiment, pk=xp_id)
